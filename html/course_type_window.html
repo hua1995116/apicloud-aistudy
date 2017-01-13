@@ -1,0 +1,117 @@
+<!doctype html>	
+<html>	
+<head>	
+    <meta charset="utf-8">	
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>	
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">	
+    <title>window</title>	
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />	
+      <link rel="stylesheet" type="text/css" href="../css/main.css" />	
+  
+    <style>	
+	html{
+		background: #f3f5f7;
+	}	
+    </style>	
+</head>	
+<body>	
+    <div id="wrap">	
+		<!-- 热点头部 -->	
+		<div id="hotTitle" class="titlebar activebar">	
+			<div id="thridHeader" class="titlebar">   
+		        <div class="topbar b7bbef0">   
+		           <a href="" onclick="close_window()">
+		           		<div class="back" tapmode="" onclick=""><img src="../image/ic_back_w.png" alt=""></div>
+		           </a>
+		           <div class="title" id="title">HTML/CSS</div>  
+		        </div>  
+		    </div>  
+		    <div class="scrollbar-shadow ">
+		    	<div class="scrollbar b7bbef0" id="scrollbarHot">
+			    	<div class="bar1 flex1 nav-clickfff " tapmode="btn_click" onclick="">全部</div>	
+			    	<div class="bar2 flex1" tapmode="btn_click" onclick="" id="matchwidthHot">基础</div>
+			    	<div class="bar2 flex1" tapmode="btn_click" onclick="" id="matchwidthHot">案例</div>	
+			    	<div class="indexbar width33" id="indexbarHot"><div class="redbox bffffff"></div></div>	
+			    </div>
+		    </div>	
+		</div>	
+        <div id="main">	
+                	
+        </div>	      
+    </div>	
+</body>	
+<script type="text/javascript" src="../script/api.js"></script>	
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript">	
+    apiready = function(){	
+		var hotheader = $api.byId('hotTitle');	
+        $api.fixIos7Bar(hotheader);	
+        var hotheader = $api.offset(hotheader);	
+        var main = $api.byId('main');	
+        var mainPos = $api.offset(main);
+
+        api.openFrameGroup({
+		    name: 'group1',
+		    background: '#f3f5f7',
+		    scrollEnabled: true,
+		    rect: {
+		        x: 0,
+		        y: hotheader.h,
+		        w: 'auto',
+		        h: 'auto'
+		    },
+		    index: 0,
+		    frames: [{
+		        name: 'course_type_frame1',
+		        url: 'course_type_frame1.html',
+		        bgColor: '#fff'
+		    }, {
+		        name: 'course_type_frame2',
+		        url: 'course_type_frame2.html',
+		        bgColor: '#fff'
+		    },{
+		        name: 'course_type_frame3',
+		        url: 'course_type_frame3.html',
+		        bgColor: '#fff'
+		    }]
+		}, function(ret, err) {
+		    var index = ret.index;
+		    if(index==0){
+		    	$('#indexbarHot').css({
+		    		transform:'translate3d(0,0,0)'
+		    	});
+		    }else if(index==1){
+		    	$('#indexbarHot').css({
+		    		transform:'translate3d(100%,0,0)'
+		    	});
+		    }else{
+		    	$('#indexbarHot').css({
+		    		transform:'translate3d(200%,0,0)'
+		    	});
+		    }
+		    $('.scrollbar').find('.flex1').removeClass('nav-clickfff').eq(index).addClass('nav-clickfff');
+		});
+
+
+		// api.openFrame ({	
+	 //        name: 'question_frame1',	
+	 //        url: 'question_frame1.html',	
+	 //        rect:{	
+	 //            x:0,	
+	 //            y:hotheader.h,	
+	 //            w:'auto',	
+	 //            h:api.frameHeight-hotheader.h 
+	 //        },	
+	 //        pageParam: {name: 'test'},	
+	 //        bounces: false,	
+	 //        opaque: false,	
+	 //        bgColor: 'rgba(70 , 70, 70,0)',	
+	 //        vScrollBarEnabled:true,	
+	 //        hScrollBarEnabled:true	
+	 //    });	
+    };	
+    function close_window(){
+    	api.closeWin();
+    }
+</script>	
+</html>	

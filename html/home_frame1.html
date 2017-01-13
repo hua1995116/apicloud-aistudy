@@ -1,0 +1,205 @@
+<!DOCTYPE html>	
+<html>	
+<head>	
+	<meta charset="utf-8">	
+	<title>frame</title>	
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>	
+	<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">	
+	<link rel="stylesheet" type="text/css" href="../css/api.css" />	
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />	
+	
+    <style>	
+    	html, body {width: 100%;min-height: 100%;background: #f0f0f0;}	
+    	.h10 {height: 10px;background: #f0f0f0;}	
+		.h1 {height: 1px;margin-left: 15px;background: #f0f0f0;}	
+		.fr {float: right;}	
+		.hint {color: #666;font-size: 12px;margin-right: 5px;}	
+	
+		.firstblock, .secondblock, .thirdblock {background-color: #fff;}	
+		
+	
+		/* 设置条目 */	
+		.item {height: 50px;line-height: 50px;padding-left: 15px;background-color: #fff;}	
+		.item_ico {float: left;width: 30px;padding: 10px 10px 10px 0;}	
+		.item_arrow {float: right;width: 16px;padding: 17px 15px 15px 0;}	
+	
+		.presshover {background-color: #FAFAFA;}	
+    </style>	
+</head>	
+<body>	
+	<div class="login" onclick="" tapmode id="unlogin">	
+		<div class="un-login" >
+			<img src="../image/default.png">
+			<span>点击登录</span>
+		</div>
+	</div>	
+	<div class="login in" id="inlogin">
+		<div class="inlogin">
+			<div class="inlogin-img">
+				<img src="../head/2.jpg" alt="">
+			</div>
+			<div class="inlogin-mess">
+				<h3>仲夏1 <img src="../image/man.png" alt=""></h3>
+				<p>
+					<span>学习时长</span>
+					<span>226小时</span>
+					<span>经验</span>
+					<span>2230</span>
+				</p>
+			</div>
+			<ul class="inlogin-ul">
+				<li>
+					<span>关注</span>
+					<span>1</span>
+				</li>
+				<li>
+					<span>粉丝</span>
+					<span>0</span>
+				</li>
+				<li>
+					<span>积分</span>
+					<span>100</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="my-home">
+		<ul>
+			<li>
+				<img src="../image/course.png" alt="">
+				<span>我的课程</span>
+			</li>
+			<li onclick="open_window('home_plan')">
+				<img src="../image/plan.png" alt="">
+				<span>我的计划</span>
+			</li>
+			<li>
+				<img src="../image/question.png" alt="">
+				<span>我的提问</span>
+			</li>
+
+		</ul>
+	</div>
+	<!-- 第一块 -->	
+	<div class="firstblock">	
+		<div class="item" tapmode="presshover" onclick="open_window('home_history')">	
+			<img src="../image/my_order_user_icon_normal.png" alt="" class="item_ico">	
+			<span>历史记录</span>	
+			<img src="../image/arrow.png" alt="" class="item_arrow">	
+		</div><div class="h1"></div>	
+		<div class="item" tapmode="presshover" onclick="open_window('home_analyze')">	
+			<img src="../image/my_coupon_user_icon_normal.png" alt="" class="item_ico">	
+			<span>我的分析</span>	
+			<img src="../image/arrow.png" alt="" class="item_arrow">	
+		</div><div class="h1"></div>	
+		<div class="item" tapmode="presshover" onclick="">	
+			<img src="../image/my_wallet_user_icon_normal.png" alt="" class="item_ico">	
+			<span>我的课表</span>	
+			<img src="../image/arrow.png" alt="" class="item_arrow">	
+			<!-- <span class="fr hint">余额/返现/抵用券/会员卡</span>	 -->
+		</div>	
+	</div>	
+		
+	
+	<!-- 第二块 -->	
+	<!-- <div class="h10"></div>	
+	<div class="secondblock">	
+		<div class="item" tapmode="presshover" onclick="">	
+			<img src="../image/my_favorite_user_icon_normal.png" alt="" class="item_ico">	
+			<span>我的收藏</span>	
+			<img src="../image/arrow.png" alt="" class="item_arrow">	
+		</div><div class="h1"></div>	
+		<div class="item" tapmode="presshover" onclick="">	
+			<img src="../image/my_history_user_icon_normal.png" alt="" class="item_ico">	
+			<span>最近浏览</span>	
+			<img src="../image/arrow.png" alt="" class="item_arrow">	
+		</div><div class="h1"></div>	
+		<div class="item" tapmode="presshover" onclick="">	
+			<img src="../image/my_review_user_icon_normal.png" alt="" class="item_ico">	
+			<span>待点评</span>	
+			<img src="../image/arrow.png" alt="" class="item_arrow">	
+		</div>	
+	</div>	 -->
+	
+	<!-- 第三块 -->	
+	<div class="h10"></div>	
+	<div class="thirdblock">	
+		<div class="item" tapmode="presshover" onclick="">	
+			<img src="../image/my_order_user_icon_normal.png" alt="" class="item_ico">	
+			<span>服务中心</span>	
+			<img src="../image/arrow.png" alt="" class="item_arrow">	
+		</div><div class="h1"></div>	
+		<div class="item" tapmode="presshover" onclick="open_window('home_setting')">	
+			<img src="../image/my_setting_user_icon_normal.png" alt="" class="item_ico">	
+			<span>设置</span>	
+			<img src="../image/arrow.png" alt="" class="item_arrow">	
+		</div>	
+	</div>	
+		
+	
+	<div class="h10"></div><div class="h10"></div>	
+</body>	
+<script type="text/javascript" src="../script/api.js"></script>	
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script>	
+	$('.un-login').click(function(){
+		open_login('login');
+	});
+
+	function open_login(name){
+		var url = name + '_window.html'
+        api.openWin({
+            name: name,
+            url: url,
+            pageParam: {name: 'test'},
+            bounces: false, 
+            showProgress:true,
+            animation:{
+			    type:"movein",              
+			    subType:"from_bottom", 
+			    duration:300               
+			}
+        });
+    }
+    function open_window(name){
+		var url = name + '_window.html'
+        api.openWin({
+            name: name,
+            url: url,
+            pageParam: {name: 'test'},
+            bounces: false, 
+            showProgress:true,
+        });
+    }
+
+    function unlogin(){
+    	$('#unlogin').css('display','block');
+    	$('#inlogin').css('display','none');
+    	api.alert({
+            title: '退出成功',
+            buttons: ['确定']
+        }, function (ret, err) {
+            if (ret.buttonIndex == 1) {
+                api.closeWin({
+                	name:'home_setting'
+                });
+            }
+        });
+    }
+
+    function inlogin(){
+    	$('#inlogin').css('display','block');
+    	$('#unlogin').css('display','none');
+    	api.alert({
+            title: '登陆成功',
+            buttons: ['确定']
+        }, function (ret, err) {
+            if (ret.buttonIndex == 1) {
+                api.closeWin({
+                	name:'login'
+                });
+            }
+        });
+    }
+</script>	
+</html>	

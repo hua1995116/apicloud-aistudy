@@ -1,0 +1,136 @@
+<!doctype html>	
+<html>	
+<head>	
+    <meta charset="utf-8">	
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>	
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">	
+    <title>window</title>	
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />	
+      <link rel="stylesheet" type="text/css" href="../css/main.css" />	
+  
+    <style>	
+ 
+		ul {  	
+			display: -webkit-box;	
+			display: -webkit-flex;	
+			display: flex;	
+		}		
+    	.activebtn {	
+    		color:#6ab494;	
+    		background-size: 30px;	
+    	}	
+		.bar_item_hover {	
+			background: #000;	
+		}
+		.btn_click {background: #DADDE0;}	
+		.topbar_title {display: inline-block;font-size: 20px; line-height: 50px;padding-left: 12px;}	
+			
+	
+		/*推荐头部*/	
+		.right_btn{float: right;padding: 11px 15px 11px 15px;}	
+		#logo {padding: 11px 0 0 10px;height: 28px;}	
+		#topbar_search {height: 28px;} 	
+		.btn_click {background: #DADDE0;} 	
+			
+		.activebar {display: block;}	
+		.bottomhover {background-color: #46494B;}	
+		/* 热点头部 */	
+		#topbar_refresh {width: 40px;padding:5px 10px;}	
+		/* 本地刷新图标 */	
+		#localrefresh {display:none;float: right; width: 40px; padding: 5px 10px;}	
+		
+    </style>	
+</head>	
+<body>	
+    <div id="wrap">	
+		<!-- 热点头部 -->	
+		<div id="hotTitle" class="titlebar activebar">	
+			<div id="thridHeader" class="titlebar">   
+		        <div class="topbar blackbar">   
+		           <a href="" onclick="close_window()">
+		           		<div class="back" tapmode="" onclick=""><img src="../image/ic_back_u.png" alt=""></div>
+		           </a>
+		          <div class="title" id="title">提问</div>  
+		        </div>  
+		    </div>  
+		    <div class="scrollbar-shadow">
+		    	<div class="scrollbar" id="scrollbarHot">
+			    	<div class="bar1 flex1 nav-click" tapmode="btn_click" onclick="">精选</div>	
+			    	<div class="bar2 flex1" tapmode="btn_click" onclick="" id="matchwidthHot">搞笑</div>	
+			    	<div class="indexbar" id="indexbarHot"><div class="redbox"></div></div>	
+			    </div>
+		    </div>	
+		</div>	
+        <div id="main">	
+                	
+        </div>	      
+    </div>	
+</body>	
+<script type="text/javascript" src="../script/api.js"></script>	
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript">	
+    apiready = function(){	
+		var hotheader = $api.byId('hotTitle');	
+        $api.fixIos7Bar(hotheader);	
+        var hotheader = $api.offset(hotheader);	
+        var main = $api.byId('main');	
+        var mainPos = $api.offset(main);
+
+        api.openFrameGroup({
+		    name: 'group1',
+		    background: '#fff',
+		    scrollEnabled: true,
+		    rect: {
+		        x: 0,
+		        y: hotheader.h,
+		        w: 'auto',
+		        h: 'auto'
+		    },
+		    index: 0,
+		    frames: [{
+		        name: 'frame1',
+		        url: 'question_frame1.html',
+		        bgColor: '#fff'
+		    }, {
+		        name: 'frame2',
+		        url: 'question_frame2.html',
+		        bgColor: '#fff'
+		    }]
+		}, function(ret, err) {
+		    var index = ret.index;
+		    if(index==0){
+		    	$('#indexbarHot').css({
+		    		transform:'translate3d(0,0,0)'
+		    	});
+		    }else{
+		    	$('#indexbarHot').css({
+		    		transform:'translate3d(100%,0,0)'
+		    	});
+		    
+		    }
+		    $('.scrollbar').find('.flex1').removeClass('nav-click').eq(index).addClass('nav-click');
+		});
+
+
+		// api.openFrame ({	
+	 //        name: 'question_frame1',	
+	 //        url: 'question_frame1.html',	
+	 //        rect:{	
+	 //            x:0,	
+	 //            y:hotheader.h,	
+	 //            w:'auto',	
+	 //            h:api.frameHeight-hotheader.h 
+	 //        },	
+	 //        pageParam: {name: 'test'},	
+	 //        bounces: false,	
+	 //        opaque: false,	
+	 //        bgColor: 'rgba(70 , 70, 70,0)',	
+	 //        vScrollBarEnabled:true,	
+	 //        hScrollBarEnabled:true	
+	 //    });	
+    };	
+    function close_window(){
+    	api.closeWin();
+    }
+</script>	
+</html>	

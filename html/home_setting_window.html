@@ -1,0 +1,80 @@
+<!doctype html> 
+<html>  
+<head>  
+    <meta charset="utf-8">  
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>  
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">   
+    <title>window</title>   
+    <link rel="stylesheet" type="text/css" href="../css/api.css" /> 
+      <link rel="stylesheet" type="text/css" href="../css/main.css" />  
+    <style>
+    html{
+        background: #f3f5f7;
+    }
+    body{
+        background: #f3f5f7;
+    }
+    </style>
+</head> 
+<body>  
+    <div id="wrap"> 
+        <!-- 热点头部 -->   
+        <div id="hotTitle" class="titlebar activebar">  
+            <div id="thridHeader" class="titlebar">   
+                <div class="topbar blackbar">   
+                   <a href="" onclick="close_window()">
+                        <div class="back" tapmode="" onclick=""><img src="../image/ic_back_u.png" alt=""></div>
+                   </a>
+                  <div class="title" id="title">设置</div>  
+                </div>  
+            </div>  
+        </div>  
+        
+    </div>  
+</body> 
+<script type="text/javascript" src="../script/api.js"></script> 
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script >   
+    apiready = function(){ 
+        var thridHeader = $api.byId('thridHeader'); 
+        $api.fixIos7Bar(thridHeader); 
+        var thridHeader = $api.offset(thridHeader);    
+        api.openFrame ({    
+                name: 'home_setting_frame',  
+                url: 'home_setting_frame.html',  
+                rect:{  
+                    x:0,    
+                    y:thridHeader.h,    
+                    w:'auto',   
+                    h:'auto'    
+                },  
+            }); 
+    };  
+    function close_window(){
+        api.closeWin();
+    }
+    function reset(){
+        $('.email-input').val('');
+    }
+    $('.switch-button').on('click',function(){
+        if($(this).hasClass('close1')){
+            $(this).removeClass('close1').addClass('open1');
+            $(this).children('.switch-btn').removeClass('close2').addClass('open2');
+        }else{
+            $(this).removeClass('open1').addClass('close1');
+            $(this).children('.switch-btn').removeClass('open2').addClass('close2');
+        }
+    });
+
+    function open_window(name){
+        var url = name + '_window.html'
+        api.openWin({
+            name: name,
+            url: url,
+            pageParam: {name: 'test'},
+            bounces: false, 
+            showProgress:true,
+        });
+    }
+</script>   
+</html> 

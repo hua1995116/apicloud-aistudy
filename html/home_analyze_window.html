@@ -1,0 +1,125 @@
+<!doctype html> 
+<html>  
+<head>  
+    <meta charset="utf-8">  
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>  
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">   
+    <title>window</title>   
+    <link rel="stylesheet" type="text/css" href="../css/api.css" /> 
+      <link rel="stylesheet" type="text/css" href="../css/main.css" />  
+    <style>
+    
+    </style>
+</head> 
+<body>  
+    <div id="wrap"> 
+        <!-- 热点头部 -->   
+        <div id="hotTitle" class="titlebar activebar">  
+            <div id="thridHeader" class="titlebar">   
+                <div class="topbar blackbar">   
+                   <a href="" onclick="close_window()">
+                        <div class="back" tapmode="" onclick=""><img src="../image/ic_back_u.png" alt=""></div>
+                   </a>
+                  <div class="title" id="title">分析</div>  
+                </div>  
+            </div>  
+
+            <div class="my-analyze">
+                <ul class="analyze-list clear">
+                    <li>
+                        <img src="../image/dingwei.png" alt="" >
+                        <span>附近排行</span>
+                    </li>
+                    <li>
+                        <img src="../head/2.jpg" alt="" class="img-head">
+                    </li>
+                    <li>
+                        <img src="../image/paihang.png" alt="">
+                        <span>排行榜</span>
+                    </li>
+                </ul>
+                <ul class="analyze-list clear">
+                    <li>
+                        <p><span>1</span>小时</p>
+                    </li>
+                    <li>
+                        <p><span>Js</span></p>
+                    </li>
+                    <li>
+                        <p><span>20</span>经验</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="scrollbar-shadow">
+                <div class="scrollbar" id="scrollbarHot">
+                    <div class="bar1 flex1 nav-click" tapmode="btn_click" onclick="">时长</div>   
+                    <div class="bar2 flex1" tapmode="btn_click" onclick="" id="matchwidthHot">分类</div>  
+                    <div class="bar2 flex1" tapmode="btn_click" onclick="" id="matchwidthHot">经验</div> 
+                    <div class="indexbar width33" id="indexbarHot"><div class="redbox"></div></div> 
+                </div>
+            </div>  
+        </div>  
+        <div id="main"> 
+                    
+        </div>        
+    </div>    
+</body> 
+<script type="text/javascript" src="../script/api.js"></script> 
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script >   
+    apiready = function(){  
+        var hotheader = $api.byId('hotTitle');  
+        $api.fixIos7Bar(hotheader); 
+        var hotheader = $api.offset(hotheader); 
+        var main = $api.byId('main');   
+        var mainPos = $api.offset(main);   
+       
+
+        api.openFrameGroup({
+            name: 'group1',
+            background: '#fff',
+            scrollEnabled: true,
+            rect: {
+                x: 0,
+                y: hotheader.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            index: 0,
+            frames: [{
+                name: 'home_analyze_frame1',
+                url: 'home_analyze_frame1.html',
+                bgColor: '#fff'
+            }, {
+                name: 'home_analyze_frame2',
+                url: 'home_analyze_frame2.html',
+                bgColor: '#fff'
+            }, {
+                name: 'home_analyze_frame3',
+                url: 'home_analyze_frame3.html',
+                bgColor: '#fff'
+            }]
+        }, function(ret, err) {
+            var index = ret.index;
+            if(index==0){
+                $('#indexbarHot').css({
+                    transform:'translate3d(0,0,0)'
+                });
+            }else if(index==1){
+                $('#indexbarHot').css({
+                    transform:'translate3d(100%,0,0)'
+                });
+            }else{
+                $('#indexbarHot').css({
+                    transform:'translate3d(200%,0,0)'
+                });
+            }
+            $('.scrollbar').find('.flex1').removeClass('nav-click').eq(index).addClass('nav-click');
+        });
+    }; 
+    function close_window(){
+        api.closeWin();
+    }
+</script>   
+</html> 

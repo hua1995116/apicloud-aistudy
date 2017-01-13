@@ -1,0 +1,91 @@
+<!doctype html> 
+<html>  
+<head>  
+    <meta charset="utf-8">  
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>  
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">   
+    <title>window</title>   
+    <link rel="stylesheet" type="text/css" href="../css/api.css" /> 
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />  
+    <link href='../css/dragula.min.css' rel='stylesheet' type='text/css' />
+    <style>
+    
+    </style>
+</head> 
+<body>  
+    <div class="myplan-ul">
+        <div class="myplan-li">
+            <div class="myplan-title">
+                <span>HTML/CSS</span>
+                <img src="../image/circle1.png" alt="">
+            </div>
+            <ul class="myplan-list" id="list1">
+                <li>开发工具</li>
+                <li>HTML和CSS基础</li>
+                <li>网页布局(一)</li>
+                <li>网页布局(二)</li>
+                <li>网页布局(三)</li>          
+            </ul>
+        </div>
+        <div class="Btop"></div>
+        <div class="myplan-li">
+            <div class="myplan-title">
+                <span> javaScript</span>
+                <img src="../image/circle1.png" alt="">
+            </div>
+            <ul class="myplan-list" id="list2">
+                <li>JS入门篇</li>
+                <li>JS进阶篇</li>
+                <li>DOM事件探秘</li>
+                <li>JS动画效果</li>
+                <li>倒计时效果</li>          
+            </ul>
+        </div>
+        <div class="Btop"></div>
+        <div class="myplan-li">
+            <div class="myplan-title">
+                <span>jQuery</span>
+                <img src="../image/circle1.png" alt="">
+            </div>
+            <ul class="myplan-list" id="list3">
+                <li>jQuery基础(一)</li>
+                <li>jQuery基础(二)</li>
+                <li>jQuery基础(三)</li>
+                <li>jQuery基础(三)</li>        
+            </ul>
+        </div>
+        <div class="Btop"></div>
+    </div>
+    <div style="height:70px;"></div>
+    <div class="clickCourse" onclick="clickCourse()">确认选择</div>
+</body> 
+<script type="text/javascript" src="../script/api.js"></script> 
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script src='../script/dragula.min.js'></script>
+<script >   
+    apiready = function(){  
+        
+
+    }; 
+    function close_window(){
+        api.closeWin();
+    }
+    dragula([document.getElementById('list1')]);
+    dragula([document.getElementById('list2')]);
+    dragula([document.getElementById('list3')]);
+    function clickCourse(){
+        var allCourse = {};
+
+        $('.myplan-li').each(function(index){
+            var content = $(this).find('.myplan-title span').html();
+            var course = [];
+            $(this).find('.myplan-list li').each(function(){
+                course.push($(this).html());
+            });
+            allCourse[content] = course;
+        })
+        console.log(allCourse);
+    }
+        
+</script>   
+</html> 

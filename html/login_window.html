@@ -1,0 +1,78 @@
+﻿<!doctype html>	
+<html>	
+<head>	
+    <meta charset="utf-8">	
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>	
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">	
+    <title>window</title>	
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />	
+      <link rel="stylesheet" type="text/css" href="../css/main.css" />	
+	<style>
+	body{
+        width: 100%;
+        height: 100%;
+        background: url(../image/login.jpg) no-repeat;
+        background-size: 100% 100%;
+    }
+	</style>
+</head>	
+<body>	
+    <div class="login-html">	
+		<!-- 热点头部 -->
+        <div class="close-login" onclick="close_window()"></div>	
+        <div class="welcome">
+            <h3>欢迎登录爱学网</h3>
+            <ul class="three-login">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>	
+        <div class="login-form">	
+            <div class="lab-input">
+            	<input type="emial" value="" placeholder="邮箱" class="email-input">
+            	<div class="close poz" tapmode="" onclick="reset()"></div>
+            </div> 	
+            
+            <div class="lab-input">
+            	<input type="password" value="" placeholder="密码">
+            </div> 
+            <button class="submit" onclick="login()">登录</button>
+        </div>	
+        <div class="login-bottom">
+            <div class="Btop"></div>
+            <span onclick="open_window('register')">邮箱注册爱学网</span>
+        </div>      
+    </div>	
+</body>	
+<script type="text/javascript" src="../script/api.js"></script>	
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script >	
+    apiready = function(){	
+		
+	}
+    function open_window(name){
+        var url = name + '_window.html'
+        api.openWin({
+            name: name,
+            url: url,
+            pageParam: {name: 'test'},
+            bounces: false, 
+            showProgress:true,
+        });
+    }
+    function close_window(){
+    	api.closeWin();
+    }
+    function reset(){
+        $('.email-input').val('');
+    }
+    function login(){
+        api.execScript({
+            name:'home',
+            frameName:'home_frame1',
+            script:'inlogin()'
+        })
+    }
+</script>	
+</html>	

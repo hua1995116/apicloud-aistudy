@@ -1,0 +1,226 @@
+<!doctype html>	
+<html>	
+<head>	
+    <meta charset="utf-8">	
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>	
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">	
+    <title>window</title>	
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />	
+      <link rel="stylesheet" type="text/css" href="../css/main.css" />	
+  
+    <style>	
+ 
+		ul {  	
+			display: -webkit-box;	
+			display: -webkit-flex;	
+			display: flex;	
+		}		
+    	.activebtn {	
+    		color:#6ab494;	
+    		background-size: 30px;	
+    	}	
+		.bar_item_hover {	
+			background: #000;	
+		}
+		.btn_click {background: #DADDE0;}	
+		.topbar_title {display: inline-block;font-size: 20px; line-height: 50px;padding-left: 12px;}	
+		.scrollbar {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: flex; 
+			text-align: center; 
+			height: 40px; 
+			line-height: 40px;
+			background: #EBECF0;
+			font-size: 12px;
+			position: relative;
+			box-shadow: 0 1px 8px 1px #baa4a4;
+		}	
+		.flex1 {-webkit-box-flex:1;-webkit-flex: 1;flex:1;color: #909090;}	
+		.indexbar {position: absolute;width: 50%;height: 5px;left: 0px;bottom: 0px;-webkit-transition: 300ms;}	
+		.redbox {background: #6ab494;width: 40px;height: 5px;position: relative;left: auto;right: auto; margin-left: auto; margin-right: auto;}	
+	
+		/*推荐头部*/	
+		.right_btn{float: right;padding: 11px 15px 11px 15px;}	
+		#logo {padding: 11px 0 0 10px;height: 28px;}	
+		#topbar_search {height: 28px;} 	
+		.btn_click {background: #DADDE0;} 	
+			
+		.activebar {display: block;}	
+		.bottomhover {background-color: #46494B;}	
+		/* 热点头部 */	
+		#topbar_refresh {width: 40px;padding:5px 10px;}	
+		/* 本地刷新图标 */	
+		#localrefresh {display:none;float: right; width: 40px; padding: 5px 10px;}	
+    </style>	
+</head>	
+<body>	
+    <div id="wrap">	
+		<!-- 热点头部 -->	
+		<div id="hotTitle" class="titlebar activebar">	
+			<div id="thridHeader" class="titlebar">   
+		        <div class="topbar blackbar">   
+		           
+		          <div class="title" id="title">发现</div>  
+		        </div>  
+		    </div>  
+		    <div class="scrollbar" id="scrollbarHot">
+		    	<div class="bar1 flex1" tapmode="btn_click" onclick="">精选</div>	
+		    	<div class="bar2 flex1" tapmode="btn_click" onclick="" id="matchwidthHot">搞笑</div>	
+		    	<div class="indexbar" id="indexbarHot"><div class="redbox"></div></div>	
+		    </div>	
+		</div>	
+        <div id="main">	
+                	
+        </div>	
+       
+    </div>	
+</body>	
+<script type="text/javascript" src="../script/api.js"></script>	
+<script type="text/javascript">	
+    apiready = function(){	
+		var hotheader = $api.byId('hotTitle');	
+        $api.fixIos7Bar(hotheader);	
+        var hotheader = $api.offset(hotheader);	
+        var main = $api.byId('main');	
+        var mainPos = $api.offset(main);
+
+        var NVTabBar = api.require('NVTabBar');
+		NVTabBar.open({
+		    styles: {
+		        bg: '#fff',
+		        h: 50,
+		        dividingLine: {
+		            width: 0.5,
+		            color: '#000'
+		        },
+		        badge: {
+		            bgColor: '#ff0',
+		            numColor: '#fff',
+		            size: 6.0
+		        }
+		    },
+		    items: [{
+		        w: api.winWidth / 3.0,
+		        bg: {
+		            marginB: 0,
+		            image: 'rgba(0,0,0,0)'
+		        },
+		        iconRect: {
+		            w: 25.0,
+		            h: 25.0,
+		        },
+		        icon: {
+		            normal: 'widget://image/button-index1.png',
+		            highlight: 'widget://image/button-index1.png',
+		            selected: 'widget://image/button-index1.png'
+		        }
+		       
+		    }, {
+		        w: api.winWidth / 3.0,
+		        bg: {
+		            marginB: 0,
+		            image: 'rgba(0,0,0,0)'
+		        },
+		        iconRect: {
+		            w: 25.0,
+		            h: 25.0,
+		        },
+		        icon: {
+		            normal: 'widget://image/button-message2.png',
+		            highlight: 'widget://image/button-message2.png',
+		            selected: 'widget://image/button-message2.png'
+		        }
+		        
+		    }, {
+		        w: api.winWidth / 3.0,
+		        bg: {
+		            marginB: 0,
+		            image: 'rgba(0,0,0,0)'
+		        },
+		        iconRect: {
+		            w: 25.0,
+		            h: 25.0,
+		        },
+		        icon: {
+		            normal: 'widget://image/button-home1.png',
+		            highlight: 'widget://image/button-home1.png',
+		            selected: 'widget://image/button-home1.png'
+		        }
+		        
+		    }],
+		    selectedIndex: 1
+		}, function(ret, err) {
+		    if(ret.index==1){
+		    	api.openWin({
+		            name: 'message',
+		            url: 'message_window.html',
+		            pageParam: {name: 'test'},
+		            bounces: false, 
+		            showProgress:true,
+		            animation:{
+					    type:"none",              
+					    subType:"from_bottom", 
+					    duration:300               
+					}
+		        });
+		        NVTabBar.setSelect({
+                    index: 1
+                });
+		    }else if(ret.index==2){
+		    	
+		    	api.openWin({
+		            name: 'home',
+		            url: 'home_window.html',
+		            pageParam: {name: 'test'},
+		            bounces: false, 
+		            showProgress:true,
+		            animation:{
+					    type:"none",              
+					    subType:"from_bottom", 
+					    duration:300               
+					}
+		        });
+		        NVTabBar.setSelect({
+				    index: 2
+				});
+		    }else if(ret.index==0){
+		    	api.openWin({
+	                name: 'index',
+	                url: 'index_window.html',
+	                pageParam: {name: 'test'},
+	                bounces: false, 
+	                showProgress:true,
+	                animation:{
+	                  type:"none",              
+	                  subType:"from_bottom", 
+	                  duration:300               
+	                }
+	            });
+	            NVTabBar.setSelect({
+				    index: 0
+				});
+		    }
+		});
+		
+		
+
+		api.openFrame ({	
+	        name: 'message_frame1',	
+	        url: 'message_frame1.html',	
+	        rect:{	
+	            x:0,	
+	            y:hotheader.h,	
+	            w:'auto',	
+	            h:api.frameHeight-hotheader.h-50 
+	        },	
+	        pageParam: {name: 'test'},	
+	        bounces: false,	
+	        opaque: false,	
+	        bgColor: 'rgba(70 , 70, 70,0)',	
+	        vScrollBarEnabled:true,	
+	        hScrollBarEnabled:true	
+	    });	
+    };	
+</script>	
+</html>	

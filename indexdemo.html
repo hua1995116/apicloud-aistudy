@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	body{
+    		background:#ddd;
+    	}
+    	.header{
+    		background:#ccc;
+    		height:30px;
+    		text-align:center;
+    	}
+    	.nav{
+    		background :#ffffff;
+    		height:30px;
+    		text-align:center;
+    	}
+    </style>
+</head>
+<body>
+	<div id="header" class="header">
+		header
+	</div>
+	<div id="nav" class="nav" onclick="openNew()" tapmode="">
+		nav
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	function openNew(){
+		api.openWin({
+			name:"newdemo",
+			url:'html/o2o_window.html'
+		})
+	}
+	function openFrame(){
+		api.openFrame({
+	        name: '',
+	        url: 'html/frame1_window.html',
+	        rect: {
+		        x:0,
+		        y:60,
+		        w:'auto',
+		        h:'auto'
+	        }
+        });
+	}
+	
+	apiready = function(){
+		openFrame();
+	}
+</script>
+</html>

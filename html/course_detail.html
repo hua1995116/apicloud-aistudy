@@ -1,0 +1,110 @@
+<!doctype html>	
+<html>	
+  <head>	
+    <meta charset="utf-8">	
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>	
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">	
+    <title>详情</title>	
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />	
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />	
+    <style>	
+     	
+     
+    </style>	
+</head>	
+<body>	
+    <div id="wrap"> 
+    <!-- 热点头部 --> 
+      <img src="../image/ic_back_u.png" alt="" class="left_btn abback" id="topbar_email"  tapmode="btn_click" onclick="close_window()">   
+      <div class="video">
+        <video width="100%"  controls >
+          <source src="../video/1.mp4" type="video/mp4">
+        您的浏览器不支持Video标签。
+        </video>
+      </div>
+      <div class="scrollbar" id="scrollbarHot">
+        <div class="bar1 flex1 nav-click" tapmode="btn_click" onclick="">章节</div> 
+        <div class="bar2 flex1" tapmode="btn_click" onclick="" id="matchwidthHot">详情</div>
+        <div class="bar2 flex1" tapmode="btn_click" onclick="" id="matchwidthHot">评论</div>
+        <div class="bar2 flex1" tapmode="btn_click" onclick="" id="matchwidthHot">问答</div>  
+        <div class="indexbar width25" id="indexbarHot"><div class="redbox"></div></div> 
+      </div>
+    </div>  
+    
+</body>	
+<script type="text/javascript" src="../script/api.js"></script>	
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript">	
+    apiready = function(){	
+      var thridHeader = $api.byId('wrap');	
+      $api.fixIos7Bar(thridHeader);	
+      var thridHeader = $api.offset(thridHeader);	
+      	
+      api.openFrameGroup({
+        name: 'course_group',
+        background: '#fff',
+        scrollEnabled: true,
+        rect: {
+            x: 0,
+            y: thridHeader.h+10,
+            w: 'auto',
+            h: 'auto'
+        },
+        index: 0,
+        frames: [{
+            name: 'course_detail1',
+            url: 'course_detail_frame1.html',
+            bgColor: '#fff'
+        }, {
+            name: 'course_detail2',
+            url: 'course_detail_frame2.html',
+            bgColor: '#fff'
+        },{
+            name: 'course_detail3',
+            url: 'course_detail_frame3.html',
+            bgColor: '#fff'
+        },{
+            name: 'course_detail4',
+            url: 'course_detail_frame4.html',
+            bgColor: '#fff'
+        }]
+    }, function(ret, err) {
+        var index = ret.index;
+        if(index==0){
+          $('#indexbarHot').css({
+            transform:'translate3d(0,0,0)'
+          });
+        }else if(index==1){
+          $('#indexbarHot').css({
+            transform:'translate3d(100%,0,0)'
+          });
+        }else if(index==2){
+          $('#indexbarHot').css({
+            transform:'translate3d(200%,0,0)'
+          });
+        }else{
+          $('#indexbarHot').css({
+            transform:'translate3d(300%,0,0)'
+          });
+        }
+        $('.scrollbar').find('.flex1').removeClass('nav-click').eq(index).addClass('nav-click');
+    });
+
+
+    
+  }
+  function close_window(){
+      api.closeWin();
+    }
+    function openwindow(name){
+      var url = name+'.html';
+        api.openWin({
+          name: name,
+          url: url,
+          pageParam: {
+              name: 'test'
+          }
+      });
+    }
+  </script>	
+</html>	

@@ -1,0 +1,62 @@
+<!doctype html>	
+<html>	
+  <head>	
+    <meta charset="utf-8">	
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>	
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">	
+    <title>window</title>	
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />	
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />	
+    <style>	
+     	
+     
+    </style>	
+</head>	
+<body>	
+    <div id="wrap"> 
+    <!-- 热点头部 --> 
+      <div id="hotTitle" class="titlebar activebar">  
+        <div id="thridHeader" class="titlebar">   
+              <div class="topbar blackbar">          
+                <img src="../image/ic_back_u.png" alt="" class="left_btn" id="topbar_email"  tapmode="btn_click" onclick="close_window()"> 
+                工具 
+                <img src="../image/search.png" alt="" class="right_btn" id="topbar_search"   tapmode="btn_click" onclick="openwindow('search')">
+              </div>  
+          </div>         
+      </div>   
+    </div>  
+</body>	
+<script type="text/javascript" src="../script/api.js"></script>	
+<script type="text/javascript">	
+    apiready = function(){	
+      var thridHeader = $api.byId('thridHeader');	
+      $api.fixIos7Bar(thridHeader);	
+      var thridHeader = $api.offset(thridHeader);	
+      	
+      api.openFrame ({	
+            name: 'tool_frame',	
+            url: 'tool_frame.html',	
+            rect:{	
+                x:0,	
+                y:thridHeader.h,	
+                w:'auto',	
+                h:'auto'	
+            },	
+           
+        });	
+    };	
+    function close_window(){
+      api.closeWin();
+    }
+    function openwindow(name){
+      var url = name+'.html';
+      api.openWin({
+        name: name,
+        url: url,
+        pageParam: {
+            name: 'test'
+        }
+    });
+    }
+  </script>	
+</html>	

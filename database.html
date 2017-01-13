@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	body{
+    		
+    	}
+    </style>
+</head>
+<body background="#fff">
+	
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		var model = api.require('model');
+		var query = api.require('query');
+		model.config({
+			appId:'A6924233341322',
+			appKey:'0E10F5FB-1B4C-4E7B-EE7C-8258F8EE44D8',
+			host:'https://d.apicloud.com'
+		});
+		query.createQuery({},function(ret,err){
+			if(ret&&ret.qid){
+				model.findAll({
+	                class:'news',
+	                qid:ret.id
+                },function(ret,err){
+                	//coding...
+                	alert(ret[0].title);
+                });
+			}
+		})
+	};
+</script>
+</html>

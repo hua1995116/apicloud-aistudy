@@ -1,0 +1,70 @@
+<!doctype html> 
+<html>  
+<head>  
+    <meta charset="utf-8">  
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>  
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">   
+    <title>window</title>   
+    <link rel="stylesheet" type="text/css" href="../css/api.css" /> 
+      <link rel="stylesheet" type="text/css" href="../css/main.css" />  
+    <style>
+    
+    </style>
+</head> 
+<body>  
+    <div id="wrap" class="bg-plan1"> 
+        <!-- 热点头部 -->   
+        <div id="hotTitle" class="titlebar activebar">  
+            <div id="thridHeader" class="titlebar">   
+                <div class="topbar planbar">   
+                   <a href="" onclick="close_window()">
+                        <div class="back" tapmode="" onclick=""><img src="../image/ic_back_w.png" alt=""></div>
+                   </a>
+                  <div class="title" id="title"></div>  
+                </div>  
+            </div>  
+
+            <div class="my-plan">
+                <h3>web前端工程师</h3>
+                <p>
+                    <span>213课程</span>
+                    <span>313252人学习</span>
+                </p>
+            </div>
+
+            
+        </div>  
+        <div id="main"> 
+                    
+        </div>        
+    </div>    
+</body> 
+<script type="text/javascript" src="../script/api.js"></script> 
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script >   
+    apiready = function(){  
+        var hotheader = $api.byId('hotTitle');  
+        $api.fixIos7Bar(hotheader); 
+        var hotheader = $api.offset(hotheader); 
+        var main = $api.byId('main');   
+        var mainPos = $api.offset(main);   
+       
+
+        api.openFrame ({    
+            name: 'home_plan_frame', 
+            url: 'home_plan_frame.html', 
+            rect:{  
+                x:0,    
+                y:hotheader.h,  
+                w:'auto',   
+                h:api.frameHeight-hotheader.h
+            },  
+            pageParam: {name: 'test'},  
+            bgColor: '#fff', 
+        });
+    }; 
+    function close_window(){
+        api.closeWin();
+    }
+</script>   
+</html> 

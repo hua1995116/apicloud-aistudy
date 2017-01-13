@@ -1,0 +1,221 @@
+<!DOCTYPE html>	
+<html>	
+<head>	
+  <meta charset="utf-8">	
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>	
+  <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">	
+  <title>frame</title>	
+  <link rel="shortcut icon" href="/favicon.ico">	
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">	
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />	
+<link rel="stylesheet" href="../css/main.css">
+</head>	
+<body>	
+	<div id="swipe" class="swipe">	
+		<div class="swipe-wrap">	
+			<div class="swipe-box"> 	
+				<img src="../image/api_1.jpg" alt="">	
+			</div>	
+			<div class="swipe-box">	
+				<img src="../image/api_2.jpg" alt="">	
+			</div>	
+			<div class="swipe-box">	
+				<img src="../image/api_3.jpg" alt="">	
+			</div>	
+		</div>	
+		<div class="title-box">	
+            <ul class="title-box-ul">	
+                <li class="active"></li>	
+                <li></li>	
+                <li></li>	
+            </ul>	
+        </div>	
+	</div>	
+	<div class="menu">
+		<ul class="menu-ul clear">
+			<a href="" onclick="windowopen(0)">
+				<li>
+					<img src="../image/caidan1.png" alt="">
+					<span>计划</span>
+				</li>
+			</a>
+			<a href=""  onclick="windowopen(1)">
+				<li>
+					<img src="../image/caidan2.png" alt="">
+					<span>工具</span>
+				</li>
+			</a>
+			<a href=""  onclick="windowopen(2)">
+				<li>
+					<img src="../image/caidan3.png" alt="">
+					<span>提问</span>
+				</li>
+			</a>
+			<a href=""  onclick="windowopen(3)">
+				<li>
+					<img src="../image/caidan4.png" alt="">
+					<span>课程</span>
+				</li>
+			</a>
+			
+		</ul>
+	</div>
+	<div class="divider"></div>
+<!--	<div class="divider"></div>	-->
+	<div class="subtitle">热门</div>	
+	<ul class="recommand_row">	
+		<li class="recommand_card" tapmod="card_hover" onclick="opendetail('course_detail')">	
+			<div class="innerCard">	
+				<img src="../image/a1.jpg" alt="">	
+				<div class="videotitle">vue.js高仿饿了么外卖app</div>	
+			</div>	
+		</li>	
+		<li class="recommand_card"  tapmod="card_hover" onclick="">	
+			<div class="innerCard">	
+				<img src="../image/a2.jpg" alt="">	
+				<div class="videotitle">微信小程序入门与实践</div>	
+			</div>	
+		</li>	
+	</ul>	
+	<ul class="recommand_row">	
+		<li class="recommand_card"  tapmod="card_hover" onclick="">	
+			<div class="innerCard">	
+				<img src="../image/a3.jpg" alt="">	
+				<div class="videotitle">HTML5开发WebApp阅读器</div>	
+			</div>	
+		</li>	
+		<li class="recommand_card" tapmod="card_hover" onclick="">	
+			<div class="innerCard">	
+				<img src="../image/a4.jpg" alt="">	
+				<div class="videotitle">iOS初级架构</div>	
+			</div>	
+		</li>	
+	</ul>	
+	<div class="divider"></div>	
+	<div class="subtitle">推荐</div>	
+	<ul class="tvshow_row clear">	
+		<li class="recommand_card" tapmod="card_hover" onclick="">	
+			<div class="innerCard">	
+				<img src="../image/a5.jpg" alt="">	
+				<div class="update">CSS深入理解之bord</div>	
+		<!-- 		<div class="videotitle"></div>	 -->
+				<div class="videosubtitle">3423人学习</div>	
+			</div>	
+		</li>	
+		<li class="recommand_card" tapmod="card_hover" onclick="">	
+			<div class="innerCard">	
+				<img src="../image/a6.jpg" alt="">	
+				<div class="update">github入门</div>	
+				<!-- <div class="videotitle">github入门</div>	 -->
+				<div class="videosubtitle">2321学习</div>	
+			</div>	
+		</li>	
+	</ul>	
+	<ul class="tvshow_row clear">	
+		<li class="recommand_card" tapmod="card_hover" onclick="">	
+			<div class="innerCard">	
+				<img src="../image/a7.jpg" alt="">	
+				<div class="update">CSS深入理解之border</div>	
+		<!-- 		<div class="videotitle"></div>	 -->
+				<div class="videosubtitle">3423人学习</div>	
+			</div>	
+		</li>	
+		<li class="recommand_card" tapmod="card_hover" onclick="">	
+			<div class="innerCard">	
+				<img src="../image/a8.jpg" alt="">	
+				<div class="update">github入门</div>	
+				<!-- <div class="videotitle">github入门</div>	 -->
+				<div class="videosubtitle">2321学习</div>	
+			</div>	
+		</li>	
+	</ul>	
+	<div class="subtitle"></div>	
+</body>	
+<script type="text/javascript" src="../script/api.js"></script>	
+<script type="text/javascript" src="../script/swipe.js"></script>	
+<script>	
+	
+		
+	var li = $api.domAll('.title-box-ul li');	
+	var mySwiper = Swipe($api.byId('swipe'),{	
+		auto:3000,	
+		continuous: true,	
+		callback: function(index,elem) {	
+            var i = li.length;	
+            while (i--) {	
+                li[i].className = '';	
+            }	
+            li[index].className = 'active';	
+        }	
+	});	
+
+	function opendetail(name){
+		var url = name + '.html'
+		api.openWin({
+		    name: name,
+		    url: url,
+		    pageParam: {name: 'test'},
+		    bounces: false,	
+		    showProgress:true,
+		});
+	}
+	function windowopen(index){
+		if(index==0){
+			api.openWin({
+			    name: 'page'+index,
+			    url: '../modules/plan.html',
+			    pageParam: {
+			        name: 'test'
+			    }
+			});
+		}else if(index==1){
+			api.openWin({
+			    name: 'page'+index,
+			    url: '../html/tool_window.html',
+			    pageParam: {
+			        name: 'test'
+			    }
+			});
+		}else if(index==2){
+			api.openWin({
+			    name: 'page'+index,
+			    url: '../html/question_window.html',
+			    pageParam: {
+			        name: 'test'
+			    }
+			});
+		}else if(index==3){
+			api.openWin({
+			    name: 'page'+index,
+			    url: '../html/course_window.html',
+			    pageParam: {
+			        name: 'test'
+			    }
+			});
+		}
+	}
+	apiready = function (){	
+		api.showProgress({
+		    style: 'default',
+		    animationType: 'fade',
+		    title: '努力加载中...',
+		    text: '先喝杯茶...',
+		    modal: false
+		});
+
+		setTimeout(function(){
+			api.hideProgress();	
+		},500);
+
+		api.setRefreshHeaderInfo({	
+			visible: true,	
+			bgColor: 'rgba(0,0,0,0)',	
+			textColor: '#666',	
+			textDown: '下拉刷新',	
+			textUp: '释放刷新'		
+		}, function(ret, err){	
+		    api.refreshHeaderLoadDone();	
+		});	
+	};	
+</script>	
+</html>	

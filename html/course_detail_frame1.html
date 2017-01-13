@@ -1,0 +1,63 @@
+<!doctype html>	
+<html>	
+  <head>	
+    <meta charset="utf-8">	
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>	
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">	
+    <title>详情</title>	
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />	
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />	
+    <style>	
+     	
+     
+    </style>	
+</head>	
+<body>	
+    <div class="list-1">
+    	<ul class="list-ul">
+    		<li>
+    			<div class="list-title-main">
+    				第1章 border-width不支持百分比
+    			</div>
+    			<div class="list-title-un clear">
+    				<span>1-1 1.border-width为何不支持百分比值</span>
+    				<span>04:00</span>
+    			</div>
+    		</li>
+    		<li>
+    			<div class="list-title-main">
+    				第1章 border-width不支持百分比
+    			</div>
+    			<div class="list-title-un clear">
+    				<span>1-1 1.border-width为何不支持百分比值</span>
+    				<span>04:00</span>
+    			</div>
+    		</li>
+    	</ul> 
+    </div>
+</body>	
+<script type="text/javascript" src="../script/api.js"></script>	
+<script type="text/javascript">	
+    apiready = function(){	
+      var thridHeader = $api.byId('thridHeader');	
+      $api.fixIos7Bar(thridHeader);	
+      var thridHeader = $api.offset(thridHeader);	
+      
+
+
+    function close_window(){
+      api.closeWin();
+    }
+    function openwindow(name){
+      var url = name+'.html';
+        api.openWin({
+          name: name,
+          url: url,
+          pageParam: {
+              name: 'test'
+          }
+      });
+    }
+  }
+  </script>	
+</html>	
